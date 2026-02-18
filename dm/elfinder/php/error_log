@@ -1,2 +1,0 @@
-[25-Feb-2016 21:31:40 UTC] PHP Parse error:  syntax error, unexpected ''uploadDeny'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/karchermarine/public_html/demo/elfinder/php/connector.php on line 290
-[25-Feb-2016 21:48:58 UTC] PHP Parse error:  syntax error, unexpected ''uploadDeny'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/karchermarine/public_html/demo/elfinder/php/connector.php on line 290

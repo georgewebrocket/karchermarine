@@ -2,3 +2,5 @@ User-Agent: *
 Disallow: 
 Disallow: /wp/wp-admin/
 Disallow: /admin/
+Disallow: /dm/
+Disallow: /demo/
