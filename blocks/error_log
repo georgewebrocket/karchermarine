@@ -1,0 +1,2 @@
+[23-Oct-2022 19:23:35 Europe/Athens] PHP Fatal error:  Class 'app' not found in /home/karchermarine/public_html/blocks/header.php on line 25
+[23-Oct-2022 19:26:13 Europe/Athens] PHP Fatal error:  Class 'app' not found in /home/karchermarine/public_html/blocks/header_1.php on line 25
