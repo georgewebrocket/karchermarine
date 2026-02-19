@@ -22,7 +22,8 @@ class DB
 	echo $rs[0]['id'];
 	*/
 	public function getRS($sql, $params = NULL) {
-		$stmt = $this->_conn->prepare($sql);
+		//echo "SQL=" . $sql;
+        $stmt = $this->_conn->prepare($sql);
 		if ($params==NULL) {
 			$stmt->execute();
 		}

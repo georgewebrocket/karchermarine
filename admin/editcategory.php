@@ -1,6 +1,6 @@
 <?php
-//ini_set('display_errors',1); 
-//error_reporting(E_ALL);
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
 require_once('php/config.php');
 require_once('php/db.php');
 require_once('php/dataobjects.php');
@@ -110,7 +110,7 @@ if($err == 0){
 }
     
 //for combo box category
-$sql = "SELECT id, title AS name, parent_id FROM app_categories";
+$sql = "SELECT id, title AS name, parent_id FROM app_categories ";
 $cat_view = new categories_view($db1, $sql, 0, 0);
 
 $rs_categories = $cat_view->get_tree_for_combobox(0, 0) ;

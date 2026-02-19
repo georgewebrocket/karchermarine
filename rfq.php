@@ -1,7 +1,7 @@
 <?php
-/*
-ini_set('display_errors',1); 
-error_reporting(E_ALL);*/
+
+ini_set('display_errors',0); 
+// error_reporting(E_ALL);
 
 require_once('php/config.php');
 require_once('php/db.php');
@@ -10,6 +10,10 @@ require_once('php/wp.php');
 require_once('php/start.php');
 require_once('php/dataobjects.php');
 require_once('php/content.php');
+
+require_once('php/session.php');
+
+
 
 //$id = $_GET['id'];
 
@@ -28,14 +32,16 @@ $breadcrumbs_str .= '</ul>';*/
 
 
 $rfqItems = array_filter($_SESSION['karcher_rfq']);
-$rfqItemIds = '';
-for ($i=0;$i<count($rfqItems);$i++) {
-	//echo $rfqItems[$i][0]."<br/>";
-	$rfqItemIds .= $rfqItems[$i][0].", ";
-	$rfqItemIds = substr($rfqItemIds, 0, strlen($rfqItemIds)-1); 
-}
+// var_dump($rfqItems);
+// $rfqItemIds = '';
+// for ($i=0;$i<count($rfqItems);$i++) {
+// 	//echo $rfqItems[$i][0]."<br/>";
+// 	$rfqItemIds .= $rfqItems[$i][0].", ";
+// 	$rfqItemIds = substr($rfqItemIds, 0, strlen($rfqItemIds)-1); 
+// }
+$rfqItemIds = implode(",", array_column($rfqItems, 0));
 $sql = "SELECT * FROM app_products WHERE id IN ($rfqItemIds)";
-//echo $sql;
+// echo $sql;
 $items = $db1->getRS($sql);
 
 

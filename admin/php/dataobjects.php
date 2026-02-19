@@ -33,7 +33,7 @@ public function __construct($myconn, $_id, $my_rows = NULL, $_ssql = '') {
         $rows = $my_rows; 
         $all_rows = arrayfunctions::filter_by_value($rows, 'id', $this->_id); 
     }
-    $icount = count($all_rows); 
+    $icount = $all_rows? count($all_rows): 0; 
 
     if ($icount==1) { 
         $this->_parent_id = $all_rows[0]['parent_id']; 
@@ -233,7 +233,7 @@ public function __construct($myconn, $_id, $my_rows = NULL, $_ssql = '') {
         $rows = $my_rows; 
         $all_rows = arrayfunctions::filter_by_value($rows, 'id', $this->_id); 
     }
-    $icount = count($all_rows); 
+    $icount = $all_rows? count($all_rows): 0; 
 
     if ($icount==1) { 
         $this->_category_id = $all_rows[0]['category_id']; 
@@ -531,7 +531,7 @@ public function __construct($myconn, $_id, $my_rows = NULL, $_ssql = '') {
         $rows = $my_rows;
         $all_rows = arrayfunctions::filter_by_value($rows, 'id', $this->_id);
     }
-    $icount = count($all_rows);
+    $icount = $all_rows? count($all_rows): 0;
 
     if ($icount==1) {
         $this->_title = $all_rows[0]['title'];
@@ -650,7 +650,7 @@ public function __construct($myconn, $_id, $my_rows = NULL, $_ssql = '') {
         $rows = $my_rows;
         $all_rows = arrayfunctions::filter_by_value($rows, 'id', $this->_id);
     }
-    $icount = count($all_rows);
+    $icount = $all_rows? count($all_rows): 0;
 
     if ($icount==1) {
         $this->_description = $all_rows[0]['description'];
@@ -733,7 +733,7 @@ public function __construct($myconn, $_id, $my_rows = NULL, $_ssql = '') {
         $rows = $my_rows;
         $all_rows = arrayfunctions::filter_by_value($rows, 'id', $this->_id);
     }
-    $icount = count($all_rows);
+    $icount = $all_rows? count($all_rows): 0;
 
     if ($icount==1) {
         $this->_description = $all_rows[0]['description'];
@@ -819,7 +819,7 @@ public function __construct($myconn, $_id, $my_rows = NULL, $_ssql = '') {
         $rows = $my_rows;
         $all_rows = arrayfunctions::filter_by_value($rows, 'id', $this->_id);
     }
-    $icount = count($all_rows);
+    $icount = $all_rows? count($all_rows): 0;
 
     if ($icount==1) {
         $this->_product_id = $all_rows[0]['product_id'];
@@ -941,7 +941,7 @@ public function __construct($myconn, $_id, $my_rows = NULL, $_ssql = '') {
         $rows = $my_rows; 
         $all_rows = arrayfunctions::filter_by_value($rows, 'id', $this->_id); 
     }
-    $icount = count($all_rows); 
+    $icount = $all_rows? count($all_rows): 0; 
 
     if ($icount==1) { 
         $this->_product1 = $all_rows[0]['product1']; 
