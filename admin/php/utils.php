@@ -115,7 +115,7 @@ class func
     {
         $ssql = "SELECT " . $fieldname . " FROM " . $tablename . " WHERE " . $criteria;	
         $all_rows = $conn->getRS($ssql);
-        $iCount = count($all_rows);
+        $iCount = $all_rows? count($all_rows): 0;
         if ($iCount > 0) {
             return $all_rows[0][$fieldname];
         }

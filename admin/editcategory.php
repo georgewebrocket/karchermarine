@@ -131,7 +131,7 @@ $rs_categories = $cat_view->get_tree_for_combobox(0, 0) ;
     <script type="text/javascript" src="fancybox/jquery.fancybox.js"></script>
      
     <!-- Add tinymce -->
-    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="js/tinymce/tinymce.min.js"></script>
     
     <script>
         tinymce.init({

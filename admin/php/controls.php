@@ -471,6 +471,7 @@ class comboBox
     protected $_extraAttr;
     protected $_dontSelect;
     protected $_zerochoice;
+    protected $_multiselect;
     
     public function __construct($id, $conn, $sql, $idField="id", $descField="description", $currentId=0, $label="") {
         $this->_id = $id;        
@@ -480,7 +481,7 @@ class comboBox
         $this->_label = $label;
         $this->_multiselect = FALSE;
         
-        if (strpos($sql, "ORDER BY")==FALSE) {
+        if (strpos($sql, "ORDER BY")==FALSE && $sql!="") {
             $sql .= " ORDER BY " . $descField;
         }
         $this->_sql = $sql;

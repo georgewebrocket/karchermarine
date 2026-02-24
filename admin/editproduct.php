@@ -1,6 +1,7 @@
 <?php
-//ini_set('display_errors',1); 
-//error_reporting(E_ALL);
+
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
 
 require_once('php/config.php');
 require_once('php/db.php');
@@ -42,12 +43,15 @@ $item_code = $product->item_code();
 $compatible_machines_ids = "";
 $sql = "SELECT item_code FROM app_products WHERE accessories_ids LIKE '%[$item_code]%' OR cleaning_agents_ids LIKE '%[$item_code]%' ";
 $rs = $db1->getRS($sql);
-for ($i = 0; $i < count($rs); $i++) {
-    $compatible_machines_ids .= $rs[$i]["item_code"];
-    if ($i < count($rs)-1) {
-        $compatible_machines_ids .= ",";
+if ($rs) {
+    for ($i = 0; $i < count($rs); $i++) {
+        $compatible_machines_ids .= $rs[$i]["item_code"];
+        if ($i < count($rs)-1) {
+            $compatible_machines_ids .= ",";
+        }
     }
 }
+
 
 $err = 0; $msg ="";
 if (isset($_GET['save']) && $_GET['save'] == 1) {
@@ -702,21 +706,24 @@ $rs_categories = $cat_view->get_tree_for_combobox(0, 0) ;
                                 <?php
                                 $sql = "SELECT * FROM app_adapter_data WHERE product1=? OR product2 = ?";
                                 $rsAdapter = $db1->getRS($sql, array($id,$id));
-                                if(count($rsAdapter)>0){
-                                    $gridAdapters = new datagrid("gridAdapters", $db1, "", 
-                                        array("id","product1","product2","adapter"), 
-                                        array("#","Προϊόν 1","Προϊόν 2","Adapter"), 
-                                        "l=gr", 0, TRUE, "editAdapter.php", "Επεξεργασία", TRUE, "delAdapter.php", "Διαγραφή", "id", "GR");
-                                    $gridAdapters->set_rs($rsAdapter);
-                                    $rsItems = $db1->getRS("SELECT id, CONCAT(item_code,' ',title) AS codetitle FROM app_products ORDER BY id");
-                                    
-                                    $gridAdapters->col_vlookupRS("product1", "product1", $rsItems, "codetitle");
-                                    $gridAdapters->col_vlookupRS("product2", "product2", $rsItems, "codetitle");
-                                    $gridAdapters->col_vlookupRS("adapter", "adapter", $rsItems, "codetitle");
-                                    
-                                    $gridAdapters->set_colWidths(array("20", "150","150","150","20","20"));
-                                    $gridAdapters->get_datagrid();
+                                if ($rsAdapter) {
+                                    if(count($rsAdapter)>0){
+                                        $gridAdapters = new datagrid("gridAdapters", $db1, "", 
+                                            array("id","product1","product2","adapter"), 
+                                            array("#","Προϊόν 1","Προϊόν 2","Adapter"), 
+                                            "l=gr", 0, TRUE, "editAdapter.php", "Επεξεργασία", TRUE, "delAdapter.php", "Διαγραφή", "id", "GR");
+                                        $gridAdapters->set_rs($rsAdapter);
+                                        $rsItems = $db1->getRS("SELECT id, CONCAT(item_code,' ',title) AS codetitle FROM app_products ORDER BY id");
+                                        
+                                        $gridAdapters->col_vlookupRS("product1", "product1", $rsItems, "codetitle");
+                                        $gridAdapters->col_vlookupRS("product2", "product2", $rsItems, "codetitle");
+                                        $gridAdapters->col_vlookupRS("adapter", "adapter", $rsItems, "codetitle");
+                                        
+                                        $gridAdapters->set_colWidths(array("20", "150","150","150","20","20"));
+                                        $gridAdapters->get_datagrid();
+                                    }
                                 }
+                                
                                 ?>
                             </div>
                             
