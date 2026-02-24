@@ -14,4 +14,8 @@ $description = "";
 $fbimg = "";
 $title = "";
 
-?>
+register_shutdown_function(function () use ($db1) {
+    if (isset($db1) && $db1 instanceof DB) {
+        $db1->close();
+    }
+});

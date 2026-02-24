@@ -27,7 +27,7 @@ public function __construct($myconn, $_id, $tprefix = "wp_", $my_rows = NULL, $_
         $rows = $my_rows;
         $all_rows = arrayfunctions::filter_by_value($rows, 'ID', $this->_id);
     }
-    $icount = count($all_rows);
+    $icount = $all_rows? count($all_rows): 0;
 
     if ($icount==1) {
         $this->_post_author = $all_rows[0]['post_author'];
@@ -435,7 +435,7 @@ class wp_category
 			$ssql = "SELECT object_id FROM ".$this->_tprefix."term_relationships WHERE term_taxonomy_id IN (" . $term_id . ")";
 			
 			$all_rows = $this->_myconn->getRS($ssql); //////
-			$iCount = count($all_rows);
+			$iCount = $all_rows? count($all_rows): 0;
 			
 			$postids ="";			
 			foreach( $all_rows as $postid){
@@ -457,7 +457,7 @@ class wp_category
 			$this->_sql = $ssql;
 			
 			$all_rows = $this->_myconn->getRS($ssql);
-			$this->_countplus = count($all_rows);
+			$this->_countplus = $all_rows? count($all_rows): 0;
 			
 			if ($limit == $this->_countplus) {
 				$lastelement = array_pop($all_rows); //remove last element
@@ -542,7 +542,7 @@ public function getMetaValue($metaKey) {
 class wp_cat
 {
 
-protected $_myconn, $_term_id, $_name, $_slug, $_term_group ;
+protected $_myconn, $_id, $_term_id, $_name, $_slug, $_term_group ;
 protected $_tprefix;
 
 public function __construct($myconn, $_id, $tprefix = "wp_", $my_rows = NULL, $_ssql = '') { 
@@ -563,7 +563,7 @@ public function __construct($myconn, $_id, $tprefix = "wp_", $my_rows = NULL, $_
         $rows = $my_rows; 
         $all_rows = arrayfunctions::filter_by_value($rows, 'id', $this->_id); 
     }
-    $icount = count($all_rows); 
+    $icount = $all_rows? count($all_rows): 0; 
 
     if ($icount==1) { 
         $this->_name = $all_rows[0]['name']; 
@@ -746,7 +746,3 @@ class wp_menu
 	
 }
 
-
-
-
-?>

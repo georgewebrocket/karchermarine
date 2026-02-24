@@ -13,6 +13,14 @@ class DB
 	public function __construct($strconn,$username,$password) {
 		$this->_conn = new PDO($strconn, $username, $password);
 	}
+
+    public function close() {
+		$this->_conn = null;
+	}
+
+	public function __destruct() {
+		$this->close();
+	}
 	
 	/*
 	EXAMPLES	
@@ -32,12 +40,12 @@ class DB
 		}
 		$rs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 
-                if (self::IsMultiDim($rs)) {
-                    return $rs;
-                }
-                else {
-                    return FALSE;
-                }
+        if (self::IsMultiDim($rs)) {
+            return $rs;
+        }
+        else {
+            return FALSE;
+        }
                 
 		//return $rs;
 	}

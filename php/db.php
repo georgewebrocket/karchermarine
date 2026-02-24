@@ -13,6 +13,14 @@ class DB
 	public function __construct($strconn,$username,$password) {
 		$this->_conn = new PDO($strconn, $username, $password);
 	}
+
+    public function close() {
+		$this->_conn = null;
+	}
+
+	public function __destruct() {
+		$this->close();
+	}
 	
 	/*
 	EXAMPLES	
